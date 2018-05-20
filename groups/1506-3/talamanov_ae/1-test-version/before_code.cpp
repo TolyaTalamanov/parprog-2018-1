@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include "shellsort.hpp"
+#include "omp_shellsort.hpp"
 
 using Time = std::chrono::high_resolution_clock;
 using ms   = std::chrono::milliseconds;
@@ -37,7 +38,7 @@ int main(int argc, char* argv[]) {
       break;
     case 2:
       start = std::chrono::high_resolution_clock::now();
-      // OmpShellSort(v1.begin(), v1.end(), count_threads);
+      OmpShellSort(v1.begin(), v1.end(), count_threads);
       end = std::chrono::high_resolution_clock::now();
       break;
     case 3:

@@ -1,13 +1,15 @@
 #ifndef GROUPS_1506_3_TALAMANOV_AE_2_OPENMP_OMP_SHELLSORT_HPP_
 #define GROUPS_1506_3_TALAMANOV_AE_2_OPENMP_OMP_SHELLSORT_HPP_
 
+#include <omp.h>
 #include <vector>
 #include <utility>
+#include <iterator>
 #include "shellsort.hpp"
 
 template<typename Iterator>
 void OmpShellSort(Iterator first, Iterator last, size_t thread_count = 1) {
-  typedef typename iterator_traits<Iterator>::value_type type;
+  typedef typename std::iterator_traits<Iterator>::value_type type;
   omp_set_num_threads(thread_count);
   size_t chunk = std::distance(first, last) / thread_count;
   Iterator f, l;
